@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "419965715073",
+    "firebase_url": "https://exalted-photon-331807-default-rtdb.firebaseio.com",
+    "project_id": "exalted-photon-331807",
+    "storage_bucket": "exalted-photon-331807.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419965715073:android:b136c838c48a51c2608380",
+        "android_client_info": {
+          "package_name": "com.example.arsample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419965715073-o4m0jqdigtfcfg6phq04o5s8e491gmqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRijQ9Llm0zQt6vB1cAC36zpiOPKVjqQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419965715073-o4m0jqdigtfcfg6phq04o5s8e491gmqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

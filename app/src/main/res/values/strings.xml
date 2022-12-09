@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">arsample</string>
+    <string name="searching_plane_message">Searching for surfaces...</string>
+    <string name="install_gp_services">Please install Google Play Services for AR</string>
+    <string name="update_arcore">Please update ARCore</string>
+    <string name="update_app">Please update this app</string>
+    <string name="ar_not_supported">This device does not support AR</string>
+    <string name="camera_not_available">Camera not available. Try restarting the app.</string>
+    <string name="failed_create_ar_session">Failed to create AR session</string>
+    <string name="permission_cl_needed">Camera and location permissions are needed to run this application</string>
+    <string name="anchor_hosted">Cloud Anchor Hosted. Short code: %1$s</string>
+    <string name="anchor_error_firebase">Cloud Anchor Hosted, but could not get a short code from Firebase</string>
+    <string name="error_hosting">Error while hosting: %1$s</string>
+    <string name="anchor_hosting">Now hosting anchor...</string>
+    <string name="anchor_saved">Anchor saved: %1$s</string>
+    <string name="anchor_not_saved">Anchor not saved</string>
+    <string name="anchor_not_found">A Cloud Anchor ID for the short code %1$s was not found.</string>
+    <string name="anchor_resolved">Cloud Anchor Resolved. Short code: %1$s</string>
+    <string name="error_anchor_resolving">Error while resolving anchor with short code %1$s. Error: %2$s</string>
+</resources>
