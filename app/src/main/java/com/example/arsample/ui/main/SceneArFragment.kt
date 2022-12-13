@@ -456,8 +456,12 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
                             earth.cameraGeospatialPose.altitude +
                             currentAnchor!!.pose.qz()
             )
+
+            val geospatialPose = earth.getGeospatialPose(currentAnchor!!.pose);
+
             earthAnchor =
-                earth.createAnchor(cameraGeospatialPose.latitude, cameraGeospatialPose.longitude, altitude, currentAnchor!!.pose.qx(), currentAnchor!!.pose.qy(), currentAnchor!!.pose.qz(), currentAnchor!!.pose.qw())
+                earth.createAnchor(geospatialPose.latitude, geospatialPose.longitude, geospatialPose.altitude, geospatialPose.eastUpSouthQuaternion)
+
 
             messageSnackbarHelper.showMessage(requireActivity(), "Now hosting anchor...");
             cloudAnchorManager.hostCloudAnchor(arCoreSessionHelper.session, earthAnchor, /* ttl= */ 300, this::onHostedAnchorAvailable)
