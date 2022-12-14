@@ -52,7 +52,6 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
     private lateinit var rootView: View
     private lateinit var surfaceView: GLSurfaceView
     private lateinit var camera: Camera
-    private var installRequested = false
     lateinit var arCoreSessionHelper: ARCoreSessionLifecycleHelper
     private val messageSnackbarHelper: SnackbarHelper = SnackbarHelper()
     private var displayRotationHelper: DisplayRotationHelper? = null
@@ -227,8 +226,6 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
 
     override fun onDrawFrame(gl: GL10?) {
 
-        Log.d(TAG, "session tracking state = " + arCoreSessionHelper.session?.earth?.trackingState)
-
         if(arCoreSessionHelper.session?.earth?.trackingState === TrackingState.STOPPED) {
             Log.e(TAG, "session stopped::" + arCoreSessionHelper.session?.earth?.earthState)
         }
@@ -360,8 +357,7 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
                 requireContext().getString(R.string.anchor_hosted, anchor.cloudAnchorId)
             )
 
-            // FIXME: if we use here the cloud anchor back from api callback, the object is moved and it lose its correct position
-             currentAnchor = anchor
+            currentAnchor = anchor
 
         } else {
             messageSnackbarHelper.showError(activity, requireContext().getString(R.string.error_hosting, cloudState))
@@ -406,9 +402,8 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
 
             val cameraGeospatialPose: GeospatialPose = earth.cameraGeospatialPose
 
-            val altitude =
-                    cameraGeospatialPose.altitude +
-                            camera.pose.qz()
+            /*
+            val altitude = cameraGeospatialPose.altitude + camera.pose.qz()
             Log.d(
                     TAG,
                     "arsample::Camera GPS position: lat=" +
@@ -439,13 +434,11 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
                             currentAnchor!!.pose.qz()
             )
 
-            val calcPosition =
-                    GeoUtilityHelpers.calculateObjectPosition(
+            val calcPosition =  GeoUtilityHelpers.calculateObjectPosition(
                             earth.cameraGeospatialPose,
                             camera.pose,
                             currentAnchor!!
                     )
-
             Log.d(
                     TAG,
                     "arsample::anchor calc position=" +
@@ -456,14 +449,14 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
                             earth.cameraGeospatialPose.altitude +
                             currentAnchor!!.pose.qz()
             )
-
-            val geospatialPose = earth.getGeospatialPose(currentAnchor!!.pose);
+*/
+            val geospatialPose = earth.getGeospatialPose(currentAnchor!!.pose)
 
             earthAnchor =
                 earth.createAnchor(geospatialPose.latitude, geospatialPose.longitude, geospatialPose.altitude, geospatialPose.eastUpSouthQuaternion)
 
 
-            messageSnackbarHelper.showMessage(requireActivity(), "Now hosting anchor...");
+            messageSnackbarHelper.showMessage(requireActivity(), "Now hosting anchor...")
             cloudAnchorManager.hostCloudAnchor(arCoreSessionHelper.session, earthAnchor, /* ttl= */ 300, this::onHostedAnchorAvailable)
             currentAnchorData = AnchorData("", earthAnchor!!)
         } catch (exc: Exception) {
