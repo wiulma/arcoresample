@@ -400,9 +400,8 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
 
             earthAnchor?.detach()
 
-            val cameraGeospatialPose: GeospatialPose = earth.cameraGeospatialPose
-
             /*
+            val cameraGeospatialPose: GeospatialPose = earth.cameraGeospatialPose
             val altitude = cameraGeospatialPose.altitude + camera.pose.qz()
             Log.d(
                     TAG,
@@ -450,7 +449,7 @@ class SceneArFragment() : Fragment(), GLSurfaceView.Renderer {
                             currentAnchor!!.pose.qz()
             )
 */
-            val geospatialPose = earth.getGeospatialPose(currentAnchor!!.pose)
+            val geospatialPose: GeospatialPose = earth.getGeospatialPose(currentAnchor!!.pose)
 
             earthAnchor =
                 earth.createAnchor(geospatialPose.latitude, geospatialPose.longitude, geospatialPose.altitude, geospatialPose.eastUpSouthQuaternion)
